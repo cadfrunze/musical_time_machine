@@ -19,6 +19,6 @@ web_data: rq.Response = rq.get(url=url_adress, headers=header)
 engine: BeautifulSoup = BeautifulSoup(markup=web_data.text, features="html.parser")
 music_items: list[str] = [item.get_text().strip() for item in engine.select("li ul li h3", id="title-of-a-story")] 
 
-with open("top_songs", "w") as fisier:
+with open("top_music.txt", "w") as fisier:
     for item in music_items:
         fisier.write(f"{item}\n")
